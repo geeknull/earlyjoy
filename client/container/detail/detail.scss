@@ -1,0 +1,45 @@
+.detail-page {
+  padding-top: 80px;
+  .avatar-wrap {
+    text-align: center;
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+  }
+  .user-name {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 22px;
+    color: #333;
+  }
+
+  .detail-info {
+    margin-top: 20px;
+    .detail-time {
+      color: #333;
+    }
+    .like-wrap {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .like-inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .iconfont {
+        font-size: 22px;
+        color: #333;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .detail-btn-wrap {
+    margin-top: 20px;
+    padding: 0 15px;
+  }
+}
