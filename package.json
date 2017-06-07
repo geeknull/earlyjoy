@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cd client && webpack-dev-server",
-    "start": "nodemon app.js"
+    "dev": "cd client && NODE_ENV=develop webpack-dev-server",
+    "build": "cd client && NODE_ENV=production webpack -p",
+    "node": "NODE_ENV=develop nodemon app.js",
+    "start": "NODE_ENV=production node app.js",
+    "publish": "pm2 startOrRestart pm2.prod.config.js",
+    "p": "pm2 startOrRestart ecosystem.config.js"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +24,7 @@
     "koa-router": "^7.1.1",
     "koa-static-server": "^1.2.1",
     "lodash.clonedeep": "^4.5.0",
+    "node-fetch": "^1.7.0",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",

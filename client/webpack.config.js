@@ -4,15 +4,18 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+let isDev = process.env.NODE_ENV === 'develop'; // 是否是开发环境
 
 module.exports = {
   entry: {
     vendor: ['babel-polyfill', 'react', 'react-dom', 'redux', 'react-redux', 'react-router-dom'],
-    main: './index.js'
+    main: './index.js',
+    login: './container/login/login.jsx'
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
-    publicPath: '/',
+    // publicPath: '/',
+    publicPath: isDev ? 'http://localhost:9333/' : '/',
     filename: '[name].bundle.js'
   },
   module: {
@@ -34,11 +37,14 @@ module.exports = {
     },
     extensions: ['.js', '.jsx']
   },
-  devtool: 'cheap-module-eval-source-map',
+  devtool: isDev ? 'cheap-module-eval-source-map' : '',
   context: __dirname,
   devServer: {
     hot: true,
-    port: 9333
+    port: 9333,
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -50,6 +56,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './template/index.html',
       filename: 'index.html',
+      chunks: ['vendor', 'main'],
+      inject: true
+    }),
+    new HtmlWebpackPlugin({
+      template: './template/login.html',
+      filename: 'login.html',
+      chunks: ['vendor', 'login'],
       inject: true
     })
   ]
