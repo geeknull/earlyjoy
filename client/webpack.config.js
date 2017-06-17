@@ -4,6 +4,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 let isDev = process.env.NODE_ENV === 'develop'; // 是否是开发环境
 
 module.exports = {
@@ -47,6 +48,7 @@ module.exports = {
     }
   },
   plugins: [
+    new OpenBrowserPlugin({ url: `http://${"localhost"}:9333/` }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
