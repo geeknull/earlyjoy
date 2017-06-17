@@ -11,8 +11,6 @@ export default class extends Component {
   }
 
   getTitle () {
-    return 13;
-
     let { location: { pathname } } = this.props.routing;
     return `同步路由信息 ${pathname}`;
   }
