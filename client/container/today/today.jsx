@@ -1,53 +1,35 @@
 import './today.scss';
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import actions from '../../redux/actions/index.js';
-import FeedCard from '../../component/feedCard/feedCard.jsx';
-import ScrollList from '../../component/scrollList/scrollList.jsx';
 
-@connect((state) => ({
-  todayListInfo: state.todayListInfo
-}), {
-  ...actions
-})
 export default class extends Component {
   constructor () {
     super();
     this.state = {
-
+      cnt: 0
     };
   }
 
   componentWillMount () {
-    this.props.getToadyList();
+
+  }
+
+  clickHandler () {
+    this.setState({
+      cnt: this.state.cnt+1
+    })
   }
 
   render () {
-    let { list, hasMore, loading, isEmpty } = this.props.todayListInfo;
+    let { cnt } = this.state;
 
     return (
       <div className="page-wrap today-page" ref="todayPage">
-        <ScrollList
-          element={this.refs.todayPage}
-          onLoad={this.props.getToadyList}
-          hasMore={hasMore}
-          loading={loading}
-          isEmpty={isEmpty}
-        >
-          <div className="today-list">
-            {
-              list.map((item, index) => {
-                return (
-                  <FeedCard
-                    key={index}
-                    route="/detail/222"
-                    item={item}
-                  />
-                )
-              })
-            }
-          </div>
-        </ScrollList>
+        今日列表
+        <br/>
+        <span>使用 react local state 切换路由后数据就不见了</span>
+        <button onClick={this.clickHandler.bind(this)}>点击数量加一</button>
+        <br/>
+        <span>数量：</span><span>{cnt}</span>
       </div>
     )
   }

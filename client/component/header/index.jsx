@@ -11,14 +11,10 @@ export default class extends Component {
   }
 
   getTitle () {
+    return 13;
+
     let { location: { pathname } } = this.props.routing;
-    switch (pathname) {
-      case '/index':
-        return '首页';
-        break;
-      default:
-        return '我是早鸟';
-    }
+    return `同步路由信息 ${pathname}`;
   }
 
   render () {
