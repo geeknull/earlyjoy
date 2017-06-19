@@ -7,6 +7,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 let isDev = process.env.NODE_ENV === 'develop'; // 是否是开发环境
 
+console.log('process.env.NODE_ENV:', process.env.NODE_ENV);
+
 module.exports = {
   entry: {
     vendor: ['babel-polyfill', 'react', 'react-dom', 'redux', 'react-redux', 'react-router-dom'],
