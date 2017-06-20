@@ -6,7 +6,7 @@ const login = require('./login.js');
 
 page(router);
 api(router);
-login(router);
+// login(router);
 
 module.exports = (app) => {
   app.use(router.routes())
