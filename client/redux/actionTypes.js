@@ -5,8 +5,6 @@ export const SET_MY_INFO = 'set_my_info'; // 设置个人信息
 export const MY_LIST = 'my_list'; // 获取我的列表
 export const MY_LIST_LOADING = 'my_list_loading'; // 我的列表读取状态
 
-export const INDEX_LIST = 'index_list'; // 获取首页信息
-
 export const TODAY_LIST = 'toady_list'; // 获取今日列表信息
 export const TODAY_LIST_LOADING = 'today_list_loading'; // 获取今日列表信息状态
 

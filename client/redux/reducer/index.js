@@ -55,27 +55,6 @@ let myListInfo = (state = cloneDeep(defaultListInfo), action) => {
   return state;
 };
 
-let mainPageInitState = {
-  name: '',
-  avatar: '',
-  recently: [],
-  isInit: false
-};
-let mainPage = (state = mainPageInitState, action) => {
-  switch ( action.type ) {
-    case CONSTANTS.INDEX_LIST:
-      return Object.assign({}, state, {
-        name: action.name,
-        avatar: action.avatar,
-        recently: action.recently,
-        getupTime: action.getupTime,
-        isInit: true
-      })
-  }
-
-  return state; // init 会走到这里
-};
-
 // 获取今日列表
 let todayListInfo = (state = cloneDeep(defaultListInfo), action) => {
   switch ( action.type ) {

@@ -3,40 +3,6 @@ import { ajax } from '../../util/index.js';
 let requestPrefix = 'http://localhost:8333';
 let requestPrefix2 = 'http://localhost:8333';
 
-export let getIndexList2 = () => {
-  ajax({
-    url: `${requestPrefix}/api/user`,
-    method: 'get'
-  }).then(res => {
-    console.log(res);
-  }).catch(err => {
-
-  });
-  return {
-    type: CONSTANTS.INDEX_LIST,
-    list: [
-      1, 2, 3
-    ]
-  }
-};
-
-export let getMainPageData = () => dispatch => {
-  ajax({
-    url: `${requestPrefix}/api/user`,
-    method: 'get'
-  }).then(res => {
-    dispatch({
-      type: CONSTANTS.INDEX_LIST,
-      name: res.name,
-      avatar: res.avatar,
-      getupTime: res.getupTime,
-      recently: res.recently
-    });
-  }).catch(err => {
-    console.log(err);
-  });
-};
-
 // 获取我的信息
 export let getMyInfo = () => (dispatch, getState) => {
   let { userName } = getState().myInfo;
@@ -170,7 +136,6 @@ export default {
   setMyInfo,
   setGetUp,
   getMyList,
-  getMainPageData,
   getToadyList,
   getRankList,
   getDetail,
