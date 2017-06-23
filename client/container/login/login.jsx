@@ -32,6 +32,7 @@ let Login =  class extends Component {
         method: 'post',
         data: { username, password }
       }).then((val) => {
+        // debugger
         location.href = 'http://localhost:8333';
       }).catch((err) => {
         console.log(err);

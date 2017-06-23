@@ -4,14 +4,21 @@
 import 'weui';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 
-import createStore from './redux/index.js';
-import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux';
+// 路由信息【react-router-dom】
+import { HashRouter, Route } from 'react-router-dom';
+
+// 创建hash路由信息【react-router-redux】
+import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createHashHistory';
 const history = createHistory();
 
+// 创建redux store【react-redux】
+import { Provider } from 'react-redux';
+import store from './redux/index.js';
+window._store = store; // 方便调试 并不是好的写法
+
+// 引入组件
 import Index from './container/index/index.jsx';
 import Today from './container/today/today.jsx';
 import Rank from './container/rank/rank.jsx';
@@ -20,9 +27,6 @@ import Wrap from './container/wrap/wrap.jsx';
 import New from './container/new/new.jsx';
 import Detail from './container/detail/detail.jsx';
 import User from './container/user/user.jsx';
-
-let store = createStore(routerReducer);
-window._store = store;
 
 ReactDOM.render(
   <Provider store={store}>

@@ -2,9 +2,6 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = (router) => {
-  router.get('/api/user', (ctx, next) => {
-    ctx.body = fs.readFileSync(path.resolve(__dirname, '../mock/api/user.json'), 'utf-8');
-  });
   router.get('/api/ranklist', (ctx, next) => {
     ctx.body = fs.readFileSync(path.resolve(__dirname, '../mock/api/ranklist.json'), 'utf-8');
   });

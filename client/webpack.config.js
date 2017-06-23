@@ -45,6 +45,16 @@ module.exports = {
     port: 9333,
     headers: {
       'Access-Control-Allow-Origin': '*'
+    },
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8333/api',
+        pathRewrite: {"^/api" : ""}
+      },
+      '/login': {
+        target: 'http://localhost:8333/login',
+        pathRewrite: {"^/login" : ""}
+      }
     }
   },
   plugins: [

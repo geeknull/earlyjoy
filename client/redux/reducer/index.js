@@ -1,6 +1,7 @@
 import * as CONSTANTS from '../actionTypes.js';
 import { combineReducers } from 'redux';
 import cloneDeep from 'lodash.clonedeep';
+import { routerReducer } from 'react-router-redux';
 
 // 个人信息
 let myInfo = (state = {}, action) => {
@@ -127,15 +128,13 @@ let otherInfo = (state={list: []}, action) => {
   return state;
 };
 
-export default function (routerReducer) {
-  return combineReducers({
-    myInfo: myInfo,
-    myListInfo: myListInfo,
-    mainPage: mainPage,
-    todayListInfo: todayListInfo,
-    rankList: rankList,
-    detail: detail,
-    otherInfo: otherInfo,
-    routing: routerReducer
-  });
-};
+export default combineReducers({
+  myInfo: myInfo,
+  myListInfo: myListInfo,
+  mainPage: mainPage,
+  todayListInfo: todayListInfo,
+  rankList: rankList,
+  detail: detail,
+  otherInfo: otherInfo,
+  routing: routerReducer
+});

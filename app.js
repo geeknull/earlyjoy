@@ -14,7 +14,7 @@ const authMiddleware = require('./middleware/auth.js');
 
 let isDev = process.env.NODE_ENV === 'develop'; // 是否是开发环境
 
-app.use(authMiddleware);
+// app.use(authMiddleware);
 app.use(bodyParser());
 app.use(convert(cors()));
 const router = require('./router')(app);

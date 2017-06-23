@@ -1,6 +1,7 @@
 import * as CONSTANTS from '../actionTypes.js';
 import { ajax } from '../../util/index.js';
 let requestPrefix = 'http://localhost:8333';
+let requestPrefix2 = 'http://localhost:8333';
 
 export let getIndexList2 = () => {
   ajax({
@@ -42,7 +43,7 @@ export let getMyInfo = () => (dispatch, getState) => {
   if (userName) { return void 0; }
 
   ajax({
-    url: `${requestPrefix}/api/myinfo`,
+    url: `${requestPrefix2}/api/myinfo`,
     method: 'get'
   }).then(res => {
     dispatch({
