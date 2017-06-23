@@ -110,7 +110,6 @@ let otherInfo = (state={list: []}, action) => {
 export default combineReducers({
   myInfo: myInfo,
   myListInfo: myListInfo,
-  mainPage: mainPage,
   todayListInfo: todayListInfo,
   rankList: rankList,
   detail: detail,
