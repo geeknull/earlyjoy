@@ -9,8 +9,8 @@
 - 基础列库：react
 - 路由：react-router4
 - 数据管理：react-redux + redux-thunk中间件 + redux-devtool
-- 路由信息同步：react-redux-router
-- 样式：weui + sass + postcss
+- 路由信息同步：react-router-redux
+- 样式：weui + less + postcss
 
 # 运行方式
 

@@ -1,4 +1,4 @@
-import './login.scss';
+import './login.less';
 import 'weui';
 import ReactDOM from 'react-dom';
 import React, { Component } from 'react';

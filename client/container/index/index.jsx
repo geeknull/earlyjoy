@@ -1,4 +1,4 @@
-import './index.scss';
+import './index.less';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions/index.js';

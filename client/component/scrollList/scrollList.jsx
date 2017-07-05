@@ -1,4 +1,4 @@
-import './scrollList.scss';
+import './scrollList.less';
 import React, { Component, Children } from 'react';
 import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';

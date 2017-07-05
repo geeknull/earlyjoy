@@ -1,4 +1,4 @@
-import './wrap.scss';
+import './wrap.less';
 import React, { Component } from 'react';
 import Header from '../../component/header/index.jsx';
 import Footer from '../../component/footer/index.jsx';

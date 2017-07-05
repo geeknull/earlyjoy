@@ -1,4 +1,4 @@
-import './new.scss';
+import './new.less';
 import React, { Component } from 'react';
 import { formatDate } from '../../lib/date.js';
 

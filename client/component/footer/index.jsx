@@ -1,4 +1,4 @@
-import './index.scss';
+import './index.less';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
