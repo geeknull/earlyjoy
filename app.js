@@ -10,20 +10,21 @@ const convert = require('koa-convert');
 const cors = require('koa-cors');
 const serve = require('koa-static-server');
 const bodyParser = require('koa-bodyparser');
-const authMiddleware = require('./middleware/auth.js');
 
 let isDev = process.env.NODE_ENV === 'develop'; // 是否是开发环境
 
-app.use(authMiddleware);
-app.use(bodyParser());
-app.use(convert(cors()));
-const router = require('./router')(app);
-app.use(serve({rootDir: path.join(__dirname, './static'), rootPath: '/static'}));
+app.use(bodyParser()); // 解析HTTP请求体
+app.use(convert(cors())); // 允许跨域
+// app.use(require('./middleware/auth.js')); // 开启统一鉴权
 
-// 线上发布的
-if (!isDev) {
-  app.use(serve({rootDir: path.join(__dirname, './dist'), rootPath: '/'})); // 在router之后要注意
-}
+isDev && app.use(require('./middleware/sleep.js')); // 开发环境 延迟模拟
+
+require('./router')(app); // 初始化路由信息
+
+app.use(serve({rootDir: path.join(__dirname, './static'), rootPath: '/static/'})); // 本地静态服务器，主要给图片使用
+
+!isDev && app.use(serve({rootDir: path.join(__dirname, './dist'), rootPath: '/'})); // 线上的静态路由
+
 
 app.listen(port, () => {
   console.log(`earlyjoy已经启动，监听${port}端口`);

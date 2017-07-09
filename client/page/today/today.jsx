@@ -1,4 +1,3 @@
-import './today.scss';
 import React, { Component } from 'react';
 
 export default class extends Component {
@@ -34,3 +33,4 @@ export default class extends Component {
     )
   }
 }
+import './today.less';

@@ -9,8 +9,8 @@
 - 基础列库：react
 - 路由：react-router4
 - 数据管理：react-redux + redux-thunk中间件 + redux-devtool
-- 路由信息同步：react-redux-router
-- 样式：weui + sass + postcss
+- 路由信息同步：react-router-redux
+- 样式：weui + less + postcss
 
 # 运行方式
 
@@ -23,10 +23,10 @@ npm install
 
 ## 开发环境运行方式
 Node.js端：
-npm run node // 如果报错了 很可能是Node.js版本不够高
+npm run dev-node // 如果报错了 很可能是Node.js版本不够高
 
 Borwser端：
-npm run dev // 会自动打开浏览器
+npm run dev-web // 会自动打开浏览器
 
 ## 部署环境运行方式
 
@@ -44,5 +44,6 @@ https://reacttraining.cn/
 - redux
 http://www.redux.org.cn/
     
+
 
 

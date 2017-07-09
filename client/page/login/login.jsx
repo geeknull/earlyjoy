@@ -1,5 +1,3 @@
-import './login.scss';
-import 'weui';
 import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
 import { ajax } from '../../util/index.js';
@@ -84,5 +82,6 @@ let Login =  class extends Component {
 };
 
 ReactDOM.render(<Login/>, document.querySelector('.doc'));
-
+import 'weui';
+import './login.less';
 

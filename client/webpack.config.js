@@ -7,13 +7,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 let isDev = process.env.NODE_ENV === 'develop'; // 是否是开发环境
 
-console.log('process.env.NODE_ENV:', process.env.NODE_ENV);
-
 module.exports = {
   entry: {
     vendor: ['babel-polyfill', 'react', 'react-dom', 'redux', 'react-redux', 'react-router-dom'],
     main: './index.js',
-    login: './container/login/login.jsx'
+    login: './page/login/login.jsx'
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -29,8 +27,8 @@ module.exports = {
         use: 'babel-loader'
       },
       {
-        test: /\.(scss|css)$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+        test: /\.(less|css)$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
       }
     ]
   },
@@ -47,11 +45,25 @@ module.exports = {
     port: 9333,
     headers: {
       'Access-Control-Allow-Origin': '*'
+    },
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8333/api',
+        pathRewrite: {"^/api" : ""}
+      },
+      '/login': {
+        target: 'http://localhost:8333/login',
+        pathRewrite: {"^/login" : ""}
+      }
     }
   },
   plugins: [
     new OpenBrowserPlugin({ url: `http://${"localhost"}:9333/` }),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV':
+        isDev ? JSON.stringify('develop') : JSON.stringify('production')
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: '[name].bundle.js',
