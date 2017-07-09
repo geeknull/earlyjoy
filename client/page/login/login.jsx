@@ -28,7 +28,7 @@ let Login =  class extends Component {
 
     if ( username && password ) {
       ajax({
-        url: 'http://localhost:8333/login',
+        url: 'http://localhost:8333/api/login',
         method: 'post',
         data: { username, password }
       }).then((val) => {

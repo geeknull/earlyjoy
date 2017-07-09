@@ -10,28 +10,20 @@ const convert = require('koa-convert');
 const cors = require('koa-cors');
 const serve = require('koa-static-server');
 const bodyParser = require('koa-bodyparser');
-const authMiddleware = require('./middleware/auth.js');
 
 let isDev = process.env.NODE_ENV === 'develop'; // 是否是开发环境
 
-
-// app.use(authMiddleware); // 开启统一鉴权
 app.use(bodyParser()); // 解析HTTP请求体
 app.use(convert(cors())); // 允许跨域
+// app.use(require('./middleware/auth.js')); // 开启统一鉴权
 
-// 开发环境 延迟模拟
-if (isDev) {
-  app.use(require('./middleware/sleep.js'));
-}
+isDev && app.use(require('./middleware/sleep.js')); // 开发环境 延迟模拟
 
 require('./router')(app); // 初始化路由信息
 
-app.use(serve({rootDir: path.join(__dirname, './static'), rootPath: '/static'})); // 本地静态服务器，主要给图片使用
+app.use(serve({rootDir: path.join(__dirname, './static'), rootPath: '/static/'})); // 本地静态服务器，主要给图片使用
 
-// 线上发布的
-if (!isDev) {
-  app.use(serve({rootDir: path.join(__dirname, './dist'), rootPath: '/'})); // 在router之后要注意
-}
+!isDev && app.use(serve({rootDir: path.join(__dirname, './dist'), rootPath: '/'})); // 线上的静态路由
 
 
 app.listen(port, () => {

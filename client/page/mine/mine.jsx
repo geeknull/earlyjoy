@@ -35,7 +35,7 @@ export default class extends Component {
 
     if ( userName ) {
       console.log('componentWillUnmount', this.myInfoBak);
-      this.props.setMyInfo(this.myInfoBak);
+      this.props.recoverMyInfo(this.myInfoBak);
     }
   }
 

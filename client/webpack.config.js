@@ -11,7 +11,7 @@ module.exports = {
   entry: {
     vendor: ['babel-polyfill', 'react', 'react-dom', 'redux', 'react-redux', 'react-router-dom'],
     main: './index.js',
-    login: './container/login/login.jsx'
+    login: './page/login/login.jsx'
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -60,6 +60,10 @@ module.exports = {
   plugins: [
     new OpenBrowserPlugin({ url: `http://${"localhost"}:9333/` }),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV':
+        isDev ? JSON.stringify('develop') : JSON.stringify('production')
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: '[name].bundle.js',

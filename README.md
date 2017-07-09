@@ -23,10 +23,10 @@ npm install
 
 ## 开发环境运行方式
 Node.js端：
-npm run node // 如果报错了 很可能是Node.js版本不够高
+npm run dev-node // 如果报错了 很可能是Node.js版本不够高
 
 Borwser端：
-npm run dev // 会自动打开浏览器
+npm run dev-web // 会自动打开浏览器
 
 ## 部署环境运行方式
 

@@ -1,16 +1,15 @@
-import './index.less';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions/index.js';
 import { Link } from 'react-router-dom';
 import ScrollList from '../../component/scrollList/scrollList.jsx';
 import FeedCard from '../../component/feedCard/feedCard.jsx';
+import UserInfo from '@/component/userInfo/userInfo.jsx';
 
 @connect((state) => {
   return {
     myInfo: state.myInfo,
-    myListInfo: state.myListInfo,
-    mainPage: state.mainPage
+    myListInfo: state.myListInfo
   }
 },{...actions})
 export default class extends Component {
@@ -22,38 +21,29 @@ export default class extends Component {
   }
 
   componentWillMount () {
-    this.props.getMyInfo();
-    this.props.getMyList();
   }
 
   componentDidMount () {
-    // console.log(this.refs);
-    // debugger
+    let { userName, loading: isLoadingMyInfo } = this.props.myInfo;
+    let isMyListInit = this.props.myListInfo.isInit;
+
+    !userName && this.props.getMyInfo();
+    !isMyListInit && this.props.getMyList();
   }
 
   render () {
-    let {
-      myInfo: { userName, avatar, getupTime, rank, continued }
-    } = this.props;
-
     let { list, hasMore, loading, isEmpty } = this.props.myListInfo;
 
     return (
         <div className="page-wrap main-page" ref="mainPage">
-          <div className="my-avatar">
-            <img src={avatar}/>
-          </div>
-          <div className="my-name">{userName}</div>
-          <div className="get-up-wrap">
-            <span>{getupTime}</span>
-          </div>
+          <UserInfo {...this.props.myInfo} />
           <Link to='/new'>
             <div className="new-wrap weui-cells">
                 <span className="add-icon">+</span>
                 <span className="add-text">添加今日状态</span>
             </div>
           </Link>
-          <div className="weui-cells__title">最近七天</div>
+          <div className="weui-cells__title">最近状态</div>
           <ScrollList
             element={this.refs.mainPage}
             onLoad={this.props.getMyList}
@@ -61,7 +51,7 @@ export default class extends Component {
             loading={loading}
             isEmpty={isEmpty}
           >
-            <ul className="recently-wrap">
+            <div className="recently-wrap">
               {
                 list.map((item, index) => {
                   return (
@@ -69,9 +59,10 @@ export default class extends Component {
                   )
                 })
               }
-            </ul>
+            </div>
           </ScrollList>
         </div>
     )
   }
 }
+import './index.less';

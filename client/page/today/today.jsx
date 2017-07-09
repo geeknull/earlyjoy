@@ -19,7 +19,8 @@ export default class extends Component {
   }
 
   componentWillMount () {
-    this.props.getToadyList();
+    let isToadyListIsInit = this.props.todayListInfo.isInit;
+    !isToadyListIsInit && this.props.getToadyList();
   }
 
   render () {

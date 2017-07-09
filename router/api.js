@@ -1,16 +1,16 @@
 const fs = require('fs');
 const path = require('path');
+const Util = require('../util/util.js');
 
 module.exports = (router) => {
-  // 获取我的信息
+  // 【用户】获取我的信息
   router.get('/api/myinfo', (ctx, next) => {
-    ctx.body = fs.readFileSync(path.resolve(__dirname, '../mock/api/myInfo.json'), 'utf-8');
+    ctx.body = Util.readJson(path.resolve(__dirname, '../mock/api/myInfo.json'));
   });
 
-  // 获取我的起床时间列表
+  // 【列表】获取我的起床时间列表
   router.post('/api/mylist', async (ctx, next) => {
-    let allList = fs.readFileSync(path.resolve(__dirname, '../mock/api/myList.json'), 'utf-8');
-    allList = JSON.parse(allList);
+    let allList = Util.readJson(path.resolve(__dirname, '../mock/api/myList.json'));
     let { offset, limit } = ctx.request.body;
 
     ctx.body = {
@@ -19,15 +19,15 @@ module.exports = (router) => {
     };
   });
 
-  // 保存我的信息
-  router.post('/api/setMyinfo', async (ctx, next) => {
+  // 【存储】保存我的信息
+  router.post('/api/setmyinfo', async (ctx, next) => {
     ctx.body = {
       code: 200,
       message: '消息保存成功'
     }
   });
 
-  // 创建今日状态
+  // 【存储】创建今日状态
   router.post('/api/markToday', async (ctx, next) => {
     ctx.body = {
       code: 200,
@@ -35,10 +35,9 @@ module.exports = (router) => {
     }
   });
 
-  // 获取今日起床列表
+  // 【列表】获取今日起床列表
   router.post('/api/todaylist', async (ctx, next) => {
-    let allList = fs.readFileSync(path.resolve(__dirname, '../mock/api/todaylist.json'), 'utf-8');
-    allList = JSON.parse(allList);
+    let allList = Util.readJson(path.resolve(__dirname, '../mock/api/todaylist.json'));
     let { offset, limit } = ctx.request.body;
 
     ctx.body = {
@@ -47,10 +46,9 @@ module.exports = (router) => {
     };
   });
 
-  // 获取排行列表
-  router.get('/api/ranklist', (ctx, next) => {
-    let allList = fs.readFileSync(path.resolve(__dirname, '../mock/api/todaylist.json'), 'utf-8');
-    allList = JSON.parse(allList);
+  // 【列表】获取排行列表
+  router.post('/api/ranklist', (ctx, next) => {
+    let allList = Util.readJson(path.resolve(__dirname, '../mock/api/rankList.json'));
     let { offset, limit } = ctx.request.body;
 
     ctx.body = {
@@ -59,26 +57,21 @@ module.exports = (router) => {
     };
   });
 
-  // 获取起床记录详情信息
+  // 【详情】获取起床记录详情信息
   router.get('/api/detail/:id', (ctx, next) => {
     let requestDetailId = ctx.params.id;
-    let detailList = fs.readFileSync(path.resolve(__dirname, '../mock/api/detail.json'), 'utf-8');
-    detailList = JSON.parse(detailList);
-    let resDetail = detailList.find(item => item.userId === requestDetailId);
-    ctx.body = resDetail;
+    ctx.body = Util.readJson(path.resolve(__dirname, '../mock/api/detail.json'));
   });
 
-  // 获取他人的信息
+  // 【用户】获取他人的信息
   router.get('/api/otheruser/:id', (ctx, next) => {
-    let requestDetailId = ctx.params.id;
-    let otherUser = fs.readFileSync(path.resolve(__dirname, '../mock/api/otherUser.json'), 'utf-8');
-    ctx.body = otherUser;
+    let requestUid = ctx.params.id;
+    ctx.body = Util.readJson(path.resolve(__dirname, '../mock/api/otherUser.json'));
   });
 
-  // 获取他人的列表
-  router.get('/api/otheruser/:id', (ctx, next) => {
-    let allList = fs.readFileSync(path.resolve(__dirname, '../mock/api/otheruser.json'), 'utf-8');
-    allList = JSON.parse(allList);
+  // 【列表】获取他人的列表
+  router.post('/api/otherlist/:id', (ctx, next) => {
+    let allList = Util.readJson(path.resolve(__dirname, '../mock/api/otherList.json'));
     let { offset, limit } = ctx.request.body;
 
     ctx.body = {
