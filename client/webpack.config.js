@@ -11,7 +11,7 @@ module.exports = {
   entry: {
     vendor: ['babel-polyfill', 'react', 'react-dom', 'redux', 'react-redux', 'react-router-dom'],
     main: './index.js',
-    login: './page/login/login.jsx'
+    login: './page-single/login-page/login-page.jsx'
   },
   output: {
     path: path.resolve(__dirname, '../dist'),

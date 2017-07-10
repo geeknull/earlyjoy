@@ -26,10 +26,11 @@ let Login =  class extends Component {
 
     if ( username && password ) {
       ajax({
-        url: 'http://localhost:8333/login',
+        url: 'http://localhost:8333/api/login',
         method: 'post',
         data: { username, password }
       }).then((val) => {
+        alert(JSON.stringify(val));
         location.href = 'http://localhost:8333';
       }).catch((err) => {
         console.log(err);
@@ -83,5 +84,5 @@ let Login =  class extends Component {
 
 ReactDOM.render(<Login/>, document.querySelector('.doc'));
 import 'weui';
-import './login.less';
+import './login-page.less';
 
