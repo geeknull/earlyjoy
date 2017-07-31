@@ -6,6 +6,11 @@ import FeedCard from '../../component/feedCard/feedCard.jsx';
 import UserInfo from '@/component/userInfo/userInfo.jsx';
 import ScrollList from '@/component/scrollList/scrollList.jsx';
 
+let obj = {
+  x: 'x',
+  y: 'x',
+};
+
 @connect(state => ({
   otherInfo: state.otherInfo,
   otherListInfo: state.otherListInfo

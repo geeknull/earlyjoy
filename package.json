@@ -6,6 +6,7 @@
   "scripts": {
     "dev-web": "cross-env NODE_ENV=develop webpack-dev-server --config ./client/webpack.config.js",
     "dev-node": "cross-env NODE_ENV=develop nodemon app.js",
+    "dev-node-base": "cross-env NODE_ENV=develop node app.js",
     "build-web": "cross-env NODE_ENV=production webpack -p --config ./client/webpack.config.js",
     "start-node": "cross-env NODE_ENV=production node app.js",
     "publish": "pm2 startOrRestart pm2.prod.config.js",
