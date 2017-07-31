@@ -15,15 +15,15 @@ const history = createHistory();
 
 // 创建redux store【react-redux】
 import { Provider } from 'react-redux';
-import store from './redux/index.js';
+import store from '../../redux/index.js';
 window._store = store; // 方便调试 并不是好的写法
 
 // 引入组件
-import Wrap from './page/wrap/wrap.jsx';
-import Index from './page/index/index.jsx';
-import Today from './page/today/today.jsx';
-import Rank from './page/rank/rank.jsx';
-import Mine from './page/mine/mine.jsx';
+import Wrap from '../../container/wrap/wrap.jsx';
+import Index from '../../container/index/index.jsx';
+import Today from '../../container/today/today.jsx';
+import Rank from '../../container/rank/rank.jsx';
+import Mine from '../../container/mine/mine.jsx';
 
 ReactDOM.render(
   <Provider store={store}>

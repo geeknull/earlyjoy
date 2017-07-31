@@ -10,8 +10,8 @@ let isDev = process.env.NODE_ENV === 'develop'; // 是否是开发环境
 module.exports = {
   entry: {
     vendor: ['babel-polyfill', 'react', 'react-dom', 'redux', 'react-redux', 'react-router-dom'],
-    main: './index.js',
-    login: './page-single/login-page/login-page.jsx'
+    main: './page/main/main.js',
+    login: './page/login/login.jsx'
   },
   output: {
     path: path.resolve(__dirname, '../dist'),

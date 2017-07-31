@@ -84,5 +84,5 @@ let Login =  class extends Component {
 
 ReactDOM.render(<Login/>, document.querySelector('.doc'));
 import 'weui';
-import './login-page.less';
+import './login.less';
 
