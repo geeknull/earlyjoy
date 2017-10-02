@@ -5,7 +5,11 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+
 let isDev = process.env.NODE_ENV === 'develop'; // 是否是开发环境
+const host = 'localhost';
+const port = 8601;
+const serverPort = 8333;
 
 module.exports = {
   entry: {
@@ -15,8 +19,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
-    // publicPath: '/',
-    publicPath: isDev ? 'http://localhost:9333/' : '/',
+    publicPath: isDev ? `http://${host}:${port}/` : '/',
     filename: '[name].bundle.js'
   },
   module: {
@@ -42,23 +45,23 @@ module.exports = {
   context: __dirname,
   devServer: {
     hot: true,
-    port: 9333,
+    port: port,
     headers: {
       'Access-Control-Allow-Origin': '*'
     },
     proxy: {
       '/api': {
-        target: 'http://localhost:8333/api',
+        target: `http://${host}:${serverPort}/api`,
         pathRewrite: {"^/api" : ""}
       },
       '/login': {
-        target: 'http://localhost:8333/login',
+        target: `http://${host}:${serverPort}/login`,
         pathRewrite: {"^/login" : ""}
       }
     }
   },
   plugins: [
-    new OpenBrowserPlugin({ url: `http://${"localhost"}:9333/` }),
+    new OpenBrowserPlugin({ url: `http://${host}:${port}/` }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV':
