@@ -12,7 +12,7 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{js,jsx,scss}]
+[*.{js,jsx,scss,vue}]
 indent_size = 2
 
 # Tab indentation (no size specified)

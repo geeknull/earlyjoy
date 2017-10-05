@@ -9,6 +9,10 @@ import Today from '../../container/today/today.vue';
 import Rank from '../../container/rank/rank.vue';
 import Mine from '../../container/mine/mine.vue';
 
+// vuex的store
+import store from '../../vuex';
+
+// 路由配置
 Vue.use(VueRouter);
 let router = new VueRouter({
   routes: [
@@ -17,22 +21,10 @@ let router = new VueRouter({
       component: Frame,
       redirect: '/index',
       children: [
-        {
-          path: 'index',
-          component: Index
-        },
-        {
-          path: 'today',
-          component: Today
-        },
-        {
-          path: 'rank',
-          component: Rank
-        },
-        {
-          path: 'mine',
-          component: Mine
-        },
+        {path: 'index', component: Index},
+        {path: 'today', component: Today},
+        {path: 'rank', component: Rank},
+        {path: 'mine', component: Mine},
       ]
     }
   ]
@@ -40,6 +32,6 @@ let router = new VueRouter({
 
 new Vue({
   el: '.doc',
-  router,
+  router, store,
   render: h => h(Wrap)
 });
