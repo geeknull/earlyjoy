@@ -1,43 +1,69 @@
 .main-page {
   padding-top: 100px;
-  .my-avatar {
+  .user-info-wrap {
+    margin-bottom: 120px;
     text-align: center;
-    margin-top: 30px;
-    img {
+    .user-avatar {
+      margin-top: 50px;
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      border: 1px solid #f0f0f0;
+    }
+    .user-name {
+      font-size: 20px;
     }
   }
+  .list{
+    padding:15px;
+    li{
+      overflow: hidden;
+      margin-bottom:10px;
+      border: 1px solid #ccc;
+      padding:10px;
+      background: #FFF;
+      img{
+        width: 80px;
+        height: 80px;
+        margin-right:10px;
+        float: left;
+      }
+      p{
+        line-height: 50px;
+      }
+      span{
+        display: block;
+        text-align: right;
+        margin-top:5px;
+      }
+    }
+  }
+  .add{
+    margin:15px;
+    border: 1px solid #ccc;
+    background-color: white;
+    height: 60px;
+    line-height: 60px;
+    display: flex;
+    align-items: center;
+    div{
+      font-size: 60px;
+      font-weight: bold;
+      margin-right:30px;
+      margin-top:-12PX;
+      margin-left:30PX;
+      display: inline;
+    }
+    span{
+      display: inline-block;
+      font-size: 20px;
+      //margin-top:-10px;
+
+    }
+  }
+
   .my-name {
     margin-top: 20px;
     font-size: 20px;
     text-align: center;
-  }
-
-  .get-up-wrap {
-    text-align: center;
-  }
-
-  .new-wrap {
-    height: 70px;
-    padding: 10px 10px 10px 20px;
-    cursor: pointer;
-    margin: 20px 0;
-    .add-icon {
-      font-size: 30px;
-      font-weight: bold;
-      margin-right: 10px;
-    }
-    .add-text {
-      vertical-align: 1px;
-    }
-  }
-
-  .recently-wrap {
-    a:last-child .feed-card-item{
-      margin-bottom: 20px;
-    }
   }
 }
