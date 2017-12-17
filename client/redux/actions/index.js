@@ -9,6 +9,12 @@ export let setCnt = (cnt) => {
   }
 };
 
+let getTodayList=()=>{
+  return function () {
+
+  }
+};
+
 export default {
   setCnt
 }
