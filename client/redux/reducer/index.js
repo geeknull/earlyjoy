@@ -13,7 +13,6 @@ let cnt = (state = initCntData, action) => {
         cnt: state.cnt+1
       });
   }
-
   return state;
 };
 
