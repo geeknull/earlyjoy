@@ -1,7 +1,45 @@
-.today-page {
-  .today-list {
-    a:last-child .feed-card-item {
-      margin-bottom: 20px;
+.page-wrap{
+  .today-list{
+    .list-item{
+      width: 100%;
+      height: 75px;
+      padding: 5px;
+      margin:10px 0;
+      display: flex;
+      border:1px solid #cccccc;
+      background: #ffffff;
+      img{
+        height: 100%;
+      }
+      .list-item-content{
+        width: 100%;
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        .list-item-top{
+          display: flex;
+          justify-content: space-between;
+          p{
+            flex:1;
+            &.time{
+              text-align: right;
+            }
+            &.ontime{
+              color: green;
+            }
+            &.outtime{
+              color: orange;
+            }
+          }
+        }
+        .list-item-bottom{
+          display: flex;
+          justify-content: space-between;
+          p{
+            flex:1;
+          }
+        }
+      }
     }
   }
 }
