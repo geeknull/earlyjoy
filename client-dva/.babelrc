@@ -1,0 +1,15 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["Android >= 4.0", "iOS >= 7"]
+      }
+    }],
+    "babel-preset-stage-0",
+    "react"
+  ],
+  "plugins": ["transform-decorators-legacy"],
+  "ignore": [
+    "node_modules"
+  ]
+}
