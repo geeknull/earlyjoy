@@ -1,4 +1,3 @@
-import * as CONSTANTS from "../../client-react/redux/actionTypes";
 import {ajax} from "../util";
 
 export default {
