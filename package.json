@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "😳The course for react stack. earlyjoy,enjoy it!",
   "main": "app.js",
+  "scripts": {
+    "dev:node": "cross-env NODE_ENV=develop nodemon app.js",
+    "dev:node-base": "cross-env NODE_ENV=develop node app.js",
+    "start:node": "cross-env NODE_ENV=production node app.js",
+    "pm2:start": "pm2 startOrRestart pm2.prod.config.js"
+  },
   "dependencies": {
     "kcors": "^2.2.1",
     "koa": "^2.3.0",
@@ -15,14 +21,6 @@
   "devDependencies": {
     "cross-env": "^5.0.5",
     "nodemon": "^1.12.1"
-  },
-  "scripts": {
-    "dev-node": "cross-env NODE_ENV=develop nodemon app.js",
-    "dev-node-base": "cross-env NODE_ENV=develop node app.js",
-
-    "start-node": "cross-env NODE_ENV=production node app.js",
-    "publish": "pm2 startOrRestart pm2.prod.config.js",
-    "p": "pm2 startOrRestart ecosystem.config.js"
   },
   "repository": {
     "type": "git",
