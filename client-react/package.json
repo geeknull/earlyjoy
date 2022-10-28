@@ -44,7 +44,7 @@
     "postcss-loader": "^2.0.6",
     "style-loader": "^0.18.2",
     "webpack": "^3.6.0",
-    "webpack-dashboard": "^1.0.0-5",
+    "webpack-dashboard": "^3.3.7",
     "webpack-dev-server": "^2.9.1"
   }
 }
